@@ -34,7 +34,7 @@ def booking_data():
             "checkin": "2024-04-05",
             "checkout": "2024-04-08"
         },
-        "additionalneeds": fake.text(max_nb_chars=25)
+        "additionalneeds": fake.text(max_nb_chars=fake.random_int(min=10, max=50))
     }
 
 
@@ -49,7 +49,7 @@ def put_booking_data():
             "checkin": "2024-04-05",
             "checkout": "2024-04-08"
         },
-        "additionalneeds": fake.text(max_nb_chars=25)
+        "additionalneeds": fake.text(max_nb_chars=fake.random_int(min=10, max=50))
     }
 
 
@@ -64,7 +64,7 @@ def put_negative_booking_data():
             "checkin": "2024-04-05",
             "checkout": "2024-04-08"
         },
-        "additionalneeds": fake.text(max_nb_chars=25)
+        "additionalneeds": fake.text(max_nb_chars=fake.random_int(min=10, max=50))
     }
 
 
