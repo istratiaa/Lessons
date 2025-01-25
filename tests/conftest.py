@@ -54,9 +54,35 @@ def put_booking_data():
 
 
 @pytest.fixture(scope="session")
-def put_negative_booking_data():
+def put_negative_booking_data_not_firstname():
+    return {
+
+        "lastname": fake.last_name(),
+        "totalprice": fake.random_int(min=100, max=10000),
+        "depositpaid": True,
+        "bookingdates": {
+            "checkin": "2024-04-05",
+            "checkout": "2024-04-08"
+        },
+        "additionalneeds": fake.text(max_nb_chars=fake.random_int(min=10, max=50))
+    }
+@pytest.fixture(scope="session")
+def put_negative_booking_data_not_totalprice():
     return {
         "firstname": fake.first_name(),
+        "lastname": fake.last_name(),
+        "depositpaid": True,
+        "bookingdates": {
+            "checkin": "2024-04-05",
+            "checkout": "2024-04-08"
+        },
+        "additionalneeds": fake.text(max_nb_chars=fake.random_int(min=10, max=50))
+    }
+
+@pytest.fixture(scope="session")
+def put_negative_booking_data_invalid_firstname():
+    return {
+        "firstname": fake.random_int(min=100, max=10000),
         "lastname": fake.last_name(),
         "totalprice": fake.random_int(min=100, max=10000),
         "depositpaid": True,
