@@ -29,7 +29,7 @@ class TestBookings:
         assert booking_data_response1['bookingdates']['checkout'] == put_booking_data['bookingdates'][
             'checkout'], "Дата выезда не совпадает"
 
-    def test_patch_booking(self, auth_session, booking_data, booking_id, patch_booking_data):
+    def test_patch_booking(self, auth_session, booking_id, patch_booking_data):
         get_booking = auth_session.patch(f"{BASE_URL}/booking/{booking_id}", json=patch_booking_data)
         assert get_booking.status_code == 200
 
