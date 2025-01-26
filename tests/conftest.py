@@ -1,11 +1,23 @@
 from faker import Faker
 import pytest
 import requests
+from playwright.sync_api import sync_playwright
 
 from tests.constant import HEADERS
 from tests.constant import BASE_URL
 
 fake = Faker()
+
+@pytest.fixture(scope="session")
+def browser():
+    playwright = sync_playwright().start()
+    browser = playwright.chromium.launch(headless=False, slow_mo=500)
+    yield browser
+    browser.close()
+    playwright.stop()
+
+
+
 
 
 @pytest.fixture(scope="session")
