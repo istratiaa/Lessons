@@ -1,3 +1,5 @@
+import pytest
+
 from constant import BASE_URL
 
 
@@ -34,12 +36,14 @@ class TestBookings:
         put_booking = auth_session.put(f"{BASE_URL}/booking/{booking_id}", json=put_negative_booking_data_not_firstname)
         assert put_booking.status_code == 400
 
+
     def test_put_negative_booking_data_not_totalprice(self, auth_session, booking_id,
                                                       put_negative_booking_data_not_totalprice):
         put_booking = auth_session.put(f"{BASE_URL}/booking/{booking_id}",
                                        json=put_negative_booking_data_not_totalprice)
         assert put_booking.status_code == 400
 
+    @pytest.mark.skip("[ISSUE-2344] Issue with network")
     def test_put_negative_booking_data_invalid_firstname(self, auth_session, booking_id,
                                                          put_negative_booking_data_invalid_firstname):
         put_booking = auth_session.put(f"{BASE_URL}/booking/{booking_id}",
